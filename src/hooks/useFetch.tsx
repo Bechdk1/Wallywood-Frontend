@@ -1,8 +1,4 @@
 import { useState, useEffect } from "react";
-import { CYCLE_MS } from "../components/Loader/Loader.styled";
-
-/** Én hel flyverunde, så loaderen altid vises som præcis én cyklus. */
-const DELAY = CYCLE_MS;
 
 export const useFetch = <T,>(url: string) => {
   const [data, setData] = useState<T | null>(null);
@@ -18,7 +14,7 @@ export const useFetch = <T,>(url: string) => {
         setTimeout(() => {
           setData(json);
           setIsLoading(false);
-        }, DELAY);
+        }, 2000);
       } catch {
         setError("Error");
       }
